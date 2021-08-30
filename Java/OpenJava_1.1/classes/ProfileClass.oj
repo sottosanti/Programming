@@ -1,0 +1,23 @@
+import openjava.mop.*;
+import openjava.ptree.*;
+import openjava.syntax.*;
+
+
+public class ProfileClass instantiates Metaclass extends openjava.mop.OJClass {
+	public void translateDefinition()
+		throws openjava.mop.MOPException
+	{
+		openjava.mop.OJMethod[] methods = getDeclaredMethods();
+		String className = getSimpleName();
+		
+		for(int i = 0; i < methods.length; i++) {
+			StatementList start = makeStatementList("System.out.println( \"Entering " + className + "::" + methods[i].getName() + "...\" ); long start = System.currentTimeMillis(); ");
+			StatementList end = makeStatementList("long end = System.currentTimeMillis(); System.out.println( \"Leaving " + className + "::" + methods[i].getName() + ". Time Spent: \" + ((end - start)/1000.0) + \"s\");");
+			start.addAll(methods[i].getBody()); // an ArrayList; addAll appends to end of list
+			start.addAll(end);
+			methods[i].setBody(start);
+		}
+		
+	}
+
+}
