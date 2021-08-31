@@ -1,3 +1,3 @@
 # Walkie-Talkie
 
-My own version of BASIC
+Writing my own language for fun
