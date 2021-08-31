@@ -19,13 +19,6 @@
 
 #define DEFAULT_OP   stdout
 
-typedef struct _string_ string_t;
-
-struct _string_ {
-    int (*append)();
-    int test;
-};
-
 void
 init_shell(void);
 
