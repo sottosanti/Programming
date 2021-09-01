@@ -19,4 +19,6 @@ walkie-talkie: $(shell_object_files) $(shellApi_object_files)
 
 .PHONY: clean
 clean:
-	rm dist/walkie-talkie/walkie-talkie
+	rm dist/walkie-talkie/walkie-talkie && \
+	rmdir dist/walkie-talkie && \
+	rmdir dist
