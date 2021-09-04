@@ -1,11 +1,8 @@
-#ifndef _SHELLAPI_H_
-#define _SHELLAPI_H_
+#ifndef __CIPHER_H__
+#define __CIPHER_H__
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <ctype.h>
-#include <sys/types.h>
 
 // foreground colours
 #define BLACK   "\033[1;30m"
@@ -17,13 +14,7 @@
 #define CYAN    "\033[1;36m"
 #define WHITE   "\033[1;37m"
 
-#define DEFAULT_OP   stdout
+#define DEFAULT_OP  stdout
+#define DEFAULT_IP  stdin
 
-void
-init_shell(void);
-
-char *
-input(const char *out_text);
-
-
-#endif // _SHELLAPI_H_
+#endif // __CIPHER_H__
