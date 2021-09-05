@@ -1,0 +1,72 @@
+/* Copy SRC to DEST.  */
+extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
+     __THROW __nonnull ((1, 2));
+
+/* Copy no more than N characters of SRC to DEST.  */
+extern char *strncpy (char *__restrict __dest,
+		      const char *__restrict __src, size_t __n)
+     __THROW __nonnull ((1, 2));
+
+/* Append SRC onto DEST.  */
+extern char *strcat (char *__restrict __dest, const char *__restrict __src)
+     __THROW __nonnull ((1, 2));
+
+/* Append no more than N characters from SRC onto DEST.  */
+extern char *strncat (char *__restrict __dest, const char *__restrict __src,
+		      size_t __n) __THROW __nonnull ((1, 2));
+
+/* Compare S1 and S2.  */
+extern int strcmp (const char *__s1, const char *__s2)
+     __THROW __attribute_pure__ __nonnull ((1, 2));
+
+/* Compare N characters of S1 and S2.  */
+extern int strncmp (const char *__s1, const char *__s2, size_t __n)
+     __THROW __attribute_pure__ __nonnull ((1, 2));
+
+/* Compare the collated forms of S1 and S2.  */
+extern int strcoll (const char *__s1, const char *__s2)
+     __THROW __attribute_pure__ __nonnull ((1, 2));
+
+/* Put a transformation of SRC into no more than N bytes of DEST.  */
+extern size_t strxfrm (char *__restrict __dest,
+		       const char *__restrict __src, size_t __n)
+     __THROW __nonnull ((2));
+
+extern char *strchr (const char *__s, int __c)
+     __THROW __attribute_pure__ __nonnull ((1));
+
+/* Return the length of the initial segment of S which
+   consists entirely of characters not in REJECT.  */
+extern size_t strcspn (const char *__s, const char *__reject)
+     __THROW __attribute_pure__ __nonnull ((1, 2));
+
+/* Return the length of the initial segment of S which
+   consists entirely of characters in ACCEPT.  */
+extern size_t strspn (const char *__s, const char *__accept)
+     __THROW __attribute_pure__ __nonnull ((1, 2));
+
+/* Find the first occurrence in S of any character in ACCEPT.  */
+extern char *strpbrk (const char *__s, const char *__accept)
+     __THROW __attribute_pure__ __nonnull ((1, 2));
+
+/* Find the first occurrence of NEEDLE in HAYSTACK.  */
+extern char *strstr (const char *__haystack, const char *__needle)
+     __THROW __attribute_pure__ __nonnull ((1, 2));
+
+/* Divide S into tokens separated by characters in DELIM.  */
+extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+     __THROW __nonnull ((2));
+
+/* Divide S into tokens separated by characters in DELIM.  Information
+   passed between calls are stored in SAVE_PTR.  */
+extern char *__strtok_r (char *__restrict __s,
+			 const char *__restrict __delim,
+			 char **__restrict __save_ptr)
+     __THROW __nonnull ((2, 3));
+
+/* Return the length of S.  */
+extern size_t strlen (const char *__s)
+     __THROW __attribute_pure__ __nonnull ((1));
+
+/* Return a string describing the meaning of the `errno' code in ERRNUM.  */
+extern char *strerror (int __errnum) __THROW;

@@ -31,10 +31,49 @@ set_functions_l1(char * input_text, uint32_t * SET_FLAGS)
         // gets rid of leading space if there is one
         if(*input_text == 32) input_text++;
         
-        if(strcmp(token, "list") == 0 || strcmp(token, "show") == 0 || strcmp(token, "display") == 0 || strcmp(token, "print") == 0) {
-            command = PRINT;
-            *SET_FLAGS = *SET_FLAGS | (1 << command);
+        command = NA;
+        switch(*token){
+            case 'd': // display, define
+                if(++*token != '\0') {
+                    switch(*token){
+                        case 'i': // check for display
+                            if (!strcmp(token, "isplay")) command = PRINT;
+                            break;
+                        case 'e': // check for define
+                            if (!strcmp(token, "efine")) command = EXPLAIN;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                break;
+            case 'e': // explain
+                if (!strcmp(token, "explain")) command = EXPLAIN;
+                break;
+            case 'f': // find
+                if (!strcmp(token, "find")) command = PRINT;
+                break;
+            case 'h': // help. may default to "show functions for.." because "help with strings", user probably wants functions that work with strings 
+                if (!strcmp(token, "help")) command = PRINT;
+                break;
+            case 'l': // list
+                if (!strcmp(token, "list")) command = PRINT;
+                break;
+            case 'n': // need
+                if (!strcmp(token, "need")) command = PRINT;
+                break;
+            case 'p': // print
+                if (!strcmp(token, "print")) command = PRINT;
+                break;
+            case 's': // show
+                if (!strcmp(token, "show")) command = PRINT;
+                break;
+            default:
+                break;
+        }
 
+        if(command != NA) {
+            *SET_FLAGS |= (1 << command);
             break;
         }
     }
@@ -60,22 +99,48 @@ set_functions_l2(char * input_text, uint32_t * SET_FLAGS)
     enum commands command;
     size_t num_characters = 0;
 
-    while(sscanf(input_text, "%s ", token) != EOF) {
-        // printf("token: %s\n", token);
-        num_characters = strlen(token);
-        while(num_characters--){
-            input_text++;
-        }
+    if(*SET_FLAGS == 2){ // PRINT
+        while(sscanf(input_text, "%s ", token) != EOF) {
+            // printf("token: %s\n", token);
+            num_characters = strlen(token);
+            while(num_characters--){
+                input_text++;
+            }
 
-        // gets rid of leading space if there is one
-        if(*input_text == 32) input_text++;
-        
-        if(strcmp(token, "prototypes") == 0) {
-            command = PROTO;
-            // printf("command: %d and test: %d\n", command, (1 << command));
-            *SET_FLAGS = *SET_FLAGS | (1 << command);
+            // gets rid of leading space if there is one
+            if(*input_text == 32) input_text++;
+            
+            command = NA;
+            switch(*token){
+                case 'd': // definitions
+                    if (!strcmp(token, "definitions")) command = DEFIN;
+                    break;
+                case 'e': // enums
+                    if (!strcmp(token, "enums")) command = ENUM;
+                    break;
+                case 'f': // functions 
+                    if (!strcmp(token, "functions")) command = FUNC;
+                    break;
+                case 'h': // header
+                    if (!strcmp(token, "header")) command = PRINT;
+                    break;
+                case 'i': // need
+                    if (!strcmp(token, "includes")) command = INCL;
+                    break;
+                case 'p': // prototypes
+                    if (!strcmp(token, "prototypes")) command = PROTO;
+                    break;
+                case 's': // structs
+                    if (!strcmp(token, "structs")) command = STRCT;
+                    break;
+                default:
+                    break;
+            }
 
-            break;
+            if(command != NA) {
+                *SET_FLAGS |= (1 << command);
+                break;
+            }
         }
     }
 

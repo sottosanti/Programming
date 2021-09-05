@@ -137,3 +137,40 @@ walkie_print(const char *out_text)
     fprintf(output,"%s%s", YELLOW, out_text);
     fflush(output);
 }
+
+/*
+    function for printing contents of a file. 
+
+    parameter: const char *filename
+        Pointer to the text that is the name of the file
+
+    return: void
+*/
+void
+walkie_print_file(const char *filename) 
+{
+    FILE * fp = fopen(filename, "r");
+
+    if (!fp) {
+        // send error that file may have been removed or something
+        walkie("I couldn't find ");
+        walkie(filename);
+        walkie(", over.\n");
+        return;
+    }
+
+    char * buffer; 
+    size_t buff_size = 512;
+
+    buffer = (char *) malloc(sizeof(char) * buff_size);
+
+    walkie_print("\n\n");
+    while (getline(&buffer, &buff_size, fp) != EOF) {
+        walkie_print("\t\t");
+        walkie_print(buffer);
+    }
+    walkie_print("\n\n");
+    
+    free(buffer);
+    return;
+}

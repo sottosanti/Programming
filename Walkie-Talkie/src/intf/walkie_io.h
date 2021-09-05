@@ -19,5 +19,8 @@ walkie(const char *out_text);
 void 
 walkie_print(const char *out_text);
 
+void
+walkie_print_file(const char *filename);
+
 
 #endif // __WAKLIE_IO_H__
