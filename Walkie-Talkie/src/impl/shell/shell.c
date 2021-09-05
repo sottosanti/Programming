@@ -9,7 +9,9 @@
  
  *******************************************************************/
 
-#include "walkieApi.h"
+#include "walkie_io.h"
+#include "walkie_set.h"
+#include "walkie_run.h"
 
 int main(void)
 {

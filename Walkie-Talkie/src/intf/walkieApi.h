@@ -1,5 +1,5 @@
-#ifndef __SHELLAPI_H__
-#define __SHELLAPI_H__
+#ifndef __WALKIEAPI_H__
+#define __WALKIEAPI_H__
 
 #include <ctype.h>
 #include <stdio.h>
@@ -32,35 +32,4 @@ enum commands {
 
 #define DEFAULT_OP   stdout
 
-void
-init_shell(void);
-
-char *
-input(const char *out_text);
-
-void
-no_over(char *out_text);
-
-void 
-walkie(const char *out_text);
-
-void 
-walkie_print(const char *out_text);
-
-char *
-set_functions_l1(char * input_text, uint32_t * SET_FLAGS);
-
-char *
-set_functions_l2(char *input_text, uint32_t * SET_FLAGS);
-
-void
-run_command(char *input_text, uint32_t command);
-
-// char *
-// set_functions_l3(char *input_text);
-
-// void
-// run_functions(uint32_t function_flags);
-
-
-#endif // __SHELLAPI_H__
+#endif // __WALKIEAPI_H__

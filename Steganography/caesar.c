@@ -35,6 +35,9 @@ int main(void) {
   char * buffer = (char*) malloc(sizeof(char) * buff_size);
   getline(&buffer, &buff_size, stdin);
   
+  int num_rotations
   fprintf(output, "\n%sEnter number of rotations. (Default is 25): \n", WHITE);
   fflush(output);
+
+
 }
