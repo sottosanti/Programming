@@ -1,0 +1,17 @@
+Sorting Algorithms:  
+
+Bubble Sort: Stable – This algorithm is stable because it just swaps the largest value up the structure to the top. If two objects are the same, no swap takes place. This means equal values that were to the left will stay to the left.  
+
+(2a 1 2b) -> (1 2a 2b) (The 2a will never swap with the 2b because swaps don’t take place when two values are equal)  
+
+Selection Sort: Nonstable – By default selection sort isn’t stable. This is because it takes a number and swaps it to the left “sorted” side. This gives the possibility that a number can be swapped behind another equal number.  
+
+(2a 2b 1) -> (1 2b 2a) (The 2a was swapped with the lowest number 1 which was on the right side of 2b. The swap takes place, and the order is not preserved)  
+
+Insertion Sort: Stable – Insertion sort uses a similar swapping mechanism as Bubble sort. It starts from the right while swapping, but never swaps equal values, meaning there is never a chance for elements positions to be flipped.  
+
+Quick Sort: Nonstable – Quick sort uses a splitting mechanism to order to sort. If this “pivot” is a number which has a duplicate, there is a good chance the order will be broken.  
+
+(2a 2b 1) -> (1 2b 2a) (In this scenario, 2b was chosen as the pivot, anything less than it went to the left, and anything greater than  or equal went to the right. 2a is equal so it went to the right, breaking the stability of the algorithm)  
+
+Merge Sort: Stable – Merge Sort splits up the data and recombines it in a way that grabs the smallest element and sticks it back in to the array. It however adheres to the order of values, giving preference to values that are in the left subarray to maintain order.   
